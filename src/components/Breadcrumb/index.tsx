@@ -48,12 +48,12 @@ const Breadcrumb = ({ data }: BreadcrumbProps) => {
           )
         } else {
           return (
-            <>
-              <Link key={index} href={item.href}>
+            <div key={index}>
+              <Link href={item.href}>
                 <Item>{item.name}</Item>
               </Link>
               <ChevronRightIcon />
-            </>
+            </div>
           )
         }
       })}

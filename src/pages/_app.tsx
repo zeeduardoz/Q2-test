@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import { ThemeProvider } from 'styled-components'
 
 import { AccountProvider } from '@contexts/account'
+import { CustomersProvider } from '@contexts/customers'
 
 import GlobalFonts from '@assets/styles/fonts'
 import theme from '@assets/styles/theme'
@@ -18,7 +19,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <ToastContainer />
       <GlobalFonts />
       <AccountProvider>
-        <Component {...pageProps} />
+        <CustomersProvider>
+          <Component {...pageProps} />
+        </CustomersProvider>
       </AccountProvider>
     </ThemeProvider>
   )
