@@ -18,13 +18,19 @@ export const Container = styled.div`
   }
 `
 
-export const Item = styled.p`
-  font-family: 'Poppins Regular';
-  font-size: 12px;
-  line-height: 20px;
+export const Item = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
 
-  color: ${({ theme }) => theme.text.secondary};
-  cursor: pointer;
+  p {
+    font-family: 'Poppins Regular';
+    font-size: 12px;
+    line-height: 20px;
+
+    color: ${({ theme }) => theme.text.secondary};
+    cursor: pointer;
+  }
 `
 
 type ItemProps = {
@@ -42,18 +48,20 @@ const Breadcrumb = ({ data }: BreadcrumbProps) => {
       {data.map((item, index) => {
         if (data.length === index + 1) {
           return (
-            <Link key={index} href={item.href}>
-              <Item>{item.name}</Item>
-            </Link>
+            <Item key={index}>
+              <Link href={item.href}>
+                <p>{item.name}</p>
+              </Link>
+            </Item>
           )
         } else {
           return (
-            <div key={index}>
+            <Item key={index}>
               <Link href={item.href}>
-                <Item>{item.name}</Item>
+                <p>{item.name}</p>
               </Link>
               <ChevronRightIcon />
-            </div>
+            </Item>
           )
         }
       })}
