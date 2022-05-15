@@ -21,9 +21,9 @@
       "@components/*": ["src/components/*"],
       "@contexts/*": ["src/contexts/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@langs/*": ["src/langs/*"],
+      "@schemas/*": ["src/schemas/*"],
+      "@modules/*": ["src/modules/*"],
       "@services/*": ["src/services/*"],
-      "@styles/*": ["src/styles/*"],
       "@types/*": ["src/@types/*"],
       "@utils/*": ["src/utils/*"]
     },

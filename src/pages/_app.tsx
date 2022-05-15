@@ -1,21 +1,25 @@
 import * as React from 'react'
 
 import type { AppProps } from 'next/app'
+
+import { ToastContainer } from 'react-toastify'
 import { ThemeProvider } from 'styled-components'
 
-import themeDark from '@styles/dark'
-import LoadFonts from '@styles/fonts'
-import themeLight from '@styles/light'
+import { AccountProvider } from '@contexts/account'
+
+import GlobalFonts from '@assets/styles/fonts'
+import theme from '@assets/styles/theme'
 
 import 'react-toastify/dist/ReactToastify.css'
 
-const theme = 'dark'
-
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>
-      <LoadFonts />
-      <Component {...pageProps} />
+    <ThemeProvider theme={theme}>
+      <ToastContainer />
+      <GlobalFonts />
+      <AccountProvider>
+        <Component {...pageProps} />
+      </AccountProvider>
     </ThemeProvider>
   )
 }

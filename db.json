@@ -1,0 +1,47 @@
+{
+  "users": [
+    {
+      "email": "teste@q2pay.com.br",
+      "password": "$2a$10$xKwF0xT5hHQawr8J.7q9.e5d93npzwP6AI7XSZyrlIDGa6fyDESg.",
+      "firstName": "Q2Pay",
+      "lastName": "Teste",
+      "avatar": "https://i.imgur.com/WKNnCY5.jpg",
+      "id": 1
+    }
+  ],
+  "bankAccounts": [
+    {
+      "id": 1,
+      "name": "Guilherme Q2Pay",
+      "document": "904.289.970-07",
+      "bank": {
+        "bankName": "237 - Banco Bradesco S.A.",
+        "code": "237",
+        "agency": "0001",
+        "account": "1167115-2"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Dimitry Q2Pay",
+      "document": "025.666.670-98",
+      "bank": {
+        "bankName": "033 - Banco Santander Brasil S.A.",
+        "code": "033",
+        "agency": "3634",
+        "account": "35934064-0"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Juan Q2Pay",
+      "document": "092.607.860-70",
+      "bank": {
+        "bankName": "001 - Banco do Brasil S.A.",
+        "code": "001",
+        "agency": "2086",
+        "account": "24206-3"
+      }
+    }
+  ]
+}

@@ -8,10 +8,23 @@ const nextConfig = {
   images: {
     domains: ['i.imgur.com'],
   },
-  i18n: {
-    locales: ['en_US', 'pt_BR', 'es_ES', 'fr_FR'],
-    defaultLocale: 'pt_BR',
-    localeDetection: true,
+  webpack: (config) => {
+    config.module.rules.push(
+      {
+        test: /\.(eot|ttf|woff|woff2|mp4|pdf|webm|txt)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'static/chunks/[path][name].[hash][ext]',
+        },
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+      }
+    )
+
+    return config
   },
 }
 

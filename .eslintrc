@@ -58,14 +58,12 @@
           {
             "groups": [
               ["^react$", "^react-native$"],
-              ["^expo"],
+              ["^next"],
               ["^[a-z]", "^@[a-z]"],
               ["^@components"],
               ["^@pages"],
-              ["^@styles"],
-              ["^@context", "^@hooks"],
+              ["^@context", "^@hooks", "^@modules"],
               ["^@services", "^@utils", "^@schemas"],
-              ["^@langs"],
               ["^@assets"],
               ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
               ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
