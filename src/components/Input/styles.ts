@@ -50,8 +50,7 @@ export const Label = styled.label<InputWrapperProps>`
   font-family: 'Poppins Medium';
   font-size: 12px;
   line-height: 20px;
-  color: ${({ isValid, isNotValid, theme }) =>
-    isValid ? theme.others.green : isNotValid ? theme.others.red : theme.text.primary};
+  color: ${({ theme, isFocus }) => (isFocus ? theme.text.primary : theme.text.secondary)};
 
   transition: all 0.2s ease-in-out;
 `
@@ -62,8 +61,8 @@ export const CustomInput = styled.input<CustomInputProps>`
   background-color: ${({ isFocus, theme }) => (isFocus ? theme.background.primary : theme.background.secondary)};
 
   font-family: 'Poppins Medium';
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 22px;
   color: ${({ theme }) => theme.text.primary};
 
   display: flex;

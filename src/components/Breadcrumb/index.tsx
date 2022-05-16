@@ -5,9 +5,8 @@ import styled from 'styled-components'
 import ChevronRightIcon from '@assets/icons/chevron-right.svg'
 
 export const Container = styled.div`
-  background: ${({ theme }) => theme.background.secondary};
-  border-radius: 8px;
-  padding: 8px 24px;
+  background: transparent;
+  margin-top: -16px;
 
   display: flex;
   align-items: center;
@@ -31,6 +30,11 @@ export const Item = styled.div`
     color: ${({ theme }) => theme.text.secondary};
     cursor: pointer;
   }
+
+  p#disabled {
+    cursor: default;
+    opacity: 0.5;
+  }
 `
 
 type ItemProps = {
@@ -50,7 +54,7 @@ const Breadcrumb = ({ data }: BreadcrumbProps) => {
           return (
             <Item key={index}>
               <Link href={item.href}>
-                <p>{item.name}</p>
+                <p id='disabled'>{item.name}</p>
               </Link>
             </Item>
           )

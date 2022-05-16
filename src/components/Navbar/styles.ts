@@ -1,16 +1,20 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
-  margin-bottom: 30px;
-`
+import SidebarNav from '@components/SidebarNav'
+
+export const Container = styled.div``
 
 export const Wrapper = styled.div`
   width: 100%;
   height: 100px;
 
   display: grid;
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 70% 27.5%;
   gap: 32px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 10% 80%;
+  }
 `
 
 export const LeftContainer = styled.div`
@@ -19,10 +23,36 @@ export const LeftContainer = styled.div`
   gap: 32px;
 `
 
-export const NavContainer = styled.div`
+export const MenuButton = styled.div`
+  display: none;
+
+  @media (max-width: 900px) {
+    display: block;
+    cursor: pointer;
+    & path {
+      fill: ${({ theme }) => theme.others.blue};
+    }
+  }
+`
+
+export const NavContainerDesktop = styled.div`
   display: flex;
   align-items: center;
   gap: 24px;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
+`
+
+export const NavContainerMobile = styled(SidebarNav)`
+  display: none;
+
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 export const NavItem = styled.div`
@@ -38,23 +68,24 @@ export const NavItem = styled.div`
   }
 `
 
-export const NavIcon = styled.div`
+export const NavIcon = styled.div<{ active: boolean }>`
   & path {
-    stroke: ${({ theme }) => theme.text.secondary};
+    stroke: ${({ active, theme }) => (active ? theme.others.blue : theme.text.secondary)};
   }
 `
 
-export const NavName = styled.p`
+export const NavName = styled.p<{ active: boolean }>`
   font-family: 'Poppins Medium';
   font-size: 12px;
   line-height: 20px;
 
-  color: ${({ theme }) => theme.text.secondary};
+  color: ${({ active, theme }) => (active ? theme.others.blue : theme.text.secondary)};
 `
 
 export const RightContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: end;
   gap: 32px;
 `
 
@@ -92,7 +123,7 @@ export const AccountContainer = styled.div`
   gap: 10px;
 
   background: ${({ theme }) => theme.background.secondary};
-  padding 6px 16px;
+  padding 2px 16px;
   border-radius: 8px;
 
   cursor: pointer;
@@ -110,6 +141,7 @@ export const AccountImage = styled.img`
   margin-right: 16px;
 
   border-radius: 100px;
+  border: 3px solid ${({ theme }) => theme.types.success};
 `
 
 export const AccountName = styled.p`

@@ -13,6 +13,10 @@ export const Container = styled.div`
 
   display: grid;
   grid-template-columns: 40% 60%;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 0% 100%;
+  }
 `
 
 export const LeftContent = styled.div`

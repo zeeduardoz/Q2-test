@@ -1,7 +1,9 @@
+import Head from 'next/head'
+
 import Breadcrumb from '@components/Breadcrumb'
 import Navbar from '@components/Navbar'
 
-import { Container, Footer, PageTitle } from './styles'
+import { Container, Footer, HeadContainer, PageTitle } from './styles'
 
 type BreadcrumbProps = {
   name: string
@@ -17,18 +19,24 @@ type LayoutProps = {
 const Layout = ({ title, breadcrumb_data, children }: LayoutProps) => {
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>Q2Panel - {title}</title>
-      </Head> */}
+      </Head>
       <Container>
-        <Navbar />
-        <Breadcrumb data={breadcrumb_data} />
-        <PageTitle>{title}</PageTitle>
+        <Navbar active={title} />
+        <HeadContainer>
+          <PageTitle>{title}</PageTitle>
+          <Breadcrumb data={breadcrumb_data} />
+        </HeadContainer>
 
         {children}
 
         <Footer>
-          Developed by <a href='http://joselopes.me'>@zeeduardoz</a> for test company Q2Pay.
+          Developed by{' '}
+          <a href='http://joselopes.me' target='_blank' rel='noreferrer'>
+            @zeeduardoz
+          </a>{' '}
+          for test company Q2Pay.
         </Footer>
       </Container>
     </>

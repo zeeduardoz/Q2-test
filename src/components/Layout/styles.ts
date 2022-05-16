@@ -18,24 +18,26 @@ export const Container = styled.div`
   }
 `
 
+export const HeadContainer = styled.div`
+  margin-top: 40px;
+`
+
 export const PageTitle = styled.h1`
   font-family: 'Poppins SemiBold';
   font-size: 20px;
   line-height: 28px;
 
   color: ${({ theme }) => theme.text.primary};
-
-  margin: 28px 0;
 `
 
 export const Footer = styled.div`
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
+  margin-top: 42px;
+  padding: 16px 0;
 
   font-family: 'Poppins Regular';
   font-size: 12px;
   line-height: 20px;
+  text-align: center;
 
   color: ${({ theme }) => theme.text.secondary};
 

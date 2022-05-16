@@ -45,7 +45,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Acessar</title>
+        <title>Q2Panel - Acessar</title>
       </Head>
 
       <Container>
@@ -106,7 +106,8 @@ const Home: NextPage = () => {
                     <Button
                       type='submit'
                       title='Entrar'
-                      width={40}
+                      variant='primary'
+                      width={45}
                       iconRight={isLoading ? <LoaderIcon /> : <ChevronRightIcon />}
                       disabled={!values.email || !values.password || !!errors.email || !!errors.password || isLoading}
                     />

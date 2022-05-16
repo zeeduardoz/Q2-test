@@ -1,4 +1,7 @@
+import { useState } from 'react'
+
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import Line from '@components/Line'
 
@@ -7,7 +10,8 @@ import { useAccount } from '@contexts/account'
 import BellIcon from '@assets/icons/bell.svg'
 import AccountsIcon from '@assets/icons/building-bank.svg'
 import CalendarIcon from '@assets/icons/calendar.svg'
-import ChevronDownIcon from '@assets/icons/chevron-down.svg'
+import ChevronRightIcon from '@assets/icons/chevron-right.svg'
+import MenuIcon from '@assets/icons/menu.svg'
 import DashboardIcon from '@assets/icons/triangle-square-circle.svg'
 
 import {
@@ -17,7 +21,9 @@ import {
   Container,
   IconWrapper,
   LeftContainer,
-  NavContainer,
+  MenuButton,
+  NavContainerDesktop,
+  NavContainerMobile,
   NavIcon,
   NavItem,
   NavName,
@@ -25,6 +31,10 @@ import {
   UtilsContainer,
   Wrapper,
 } from './styles'
+
+type NavbarProps = {
+  active: string
+}
 
 const nav = [
   {
@@ -39,24 +49,42 @@ const nav = [
   },
 ]
 
-const Navbar = () => {
-  const { account } = useAccount()
+const Navbar = ({ active }: NavbarProps) => {
+  const router = useRouter()
+  const { account, pushSignOut } = useAccount()
+  const [isOpen, setOpen] = useState(false)
+
   return (
     <Container>
       <Wrapper>
         <LeftContainer>
-          <NavContainer>
+          <NavContainerDesktop>
             {nav.map((item, index) => {
               return (
                 <Link key={index} href={item.href}>
                   <NavItem>
-                    <NavIcon>{item.icon}</NavIcon>
-                    <NavName>{item.name}</NavName>
+                    <NavIcon active={active === item.name}>{item.icon}</NavIcon>
+                    <NavName active={active === item.name}>{item.name}</NavName>
                   </NavItem>
                 </Link>
               )
             })}
-          </NavContainer>
+          </NavContainerDesktop>
+          <MenuButton onClick={() => setOpen(true)}>
+            <MenuIcon />
+          </MenuButton>
+          <NavContainerMobile visible={isOpen} onClose={() => setOpen(false)}>
+            {nav.map((item, index) => {
+              return (
+                <Link key={index} href={item.href}>
+                  <NavItem>
+                    <NavIcon active={active === item.name}>{item.icon}</NavIcon>
+                    <NavName active={active === item.name}>{item.name}</NavName>
+                  </NavItem>
+                </Link>
+              )
+            })}
+          </NavContainerMobile>
         </LeftContainer>
         <RightContainer>
           <UtilsContainer>
@@ -72,7 +100,12 @@ const Navbar = () => {
           <AccountContainer>
             <AccountImage src={account ? account.avatar : ''} alt='Account Image' />
             <AccountName>{account ? account.firstName : ''}</AccountName>
-            <ChevronDownIcon />
+            <ChevronRightIcon
+              onClick={() => {
+                pushSignOut()
+                router.push('/auth/login')
+              }}
+            />
           </AccountContainer>
         </RightContainer>
       </Wrapper>
