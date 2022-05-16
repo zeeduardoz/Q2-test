@@ -11,6 +11,9 @@ const nextConfig = {
   images: {
     domains: ['i.imgur.com'],
   },
+  env: {
+    API: process.env.API,
+  },
   webpack: (config) => {
     config.module.rules.push(
       {
